@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Skin version="1.0">
+	<NormalFace>
+		<!--第1行-->
+	  	<Face filename="00001[28x28x8BPP].gif" show="1" pos="0,0,28,28"   shortcuts="/wx" meaning="微笑" sprite="1"/>		
+		<Face filename="00002[28x28x8BPP].gif" show="1" pos="28,0,28,28"  shortcuts="/pz" meaning="撇嘴" sprite="2"/>		
+		<Face filename="00003[28x28x8BPP].gif" show="1" pos="56,0,28,28"  shortcuts="/se" meaning="色"   sprite="3"/>		
+		<Face filename="00004[28x28x8BPP].gif" show="1" pos="84,0,28,28"  shortcuts="/fd" meaning="发呆" sprite="4"/>		
+		<Face filename="00005[28x28x8BPP].gif" show="1" pos="112,0,28,28" shortcuts="/dy" meaning="得意" sprite="5"/>	
+		<Face filename="00059[28x28x8BPP].gif" show="1" pos="140,0,28,28" shortcuts="/lb" meaning="泪奔"/><!--新加-->		
+		<Face filename="00007[28x28x8BPP].gif" show="1" pos="168,0,28,28" shortcuts="/hx" meaning="害羞" sprite="7"/>	
+		<Face filename="00008[28x28x8BPP].gif" show="1" pos="196,0,28,28" shortcuts="/bz" meaning="闭嘴" sprite="8"/>			
+		<Face filename="00010[28x28x8BPP].gif" show="1" pos="224,0,28,28" shortcuts="/dk" meaning="大哭" sprite="10"/>	
+		<Face filename="00011[28x28x8BPP].gif" show="1" pos="252,0,28,28" shortcuts="/gg" meaning="尴尬" sprite="11"/>
+		<Face filename="00012[28x28x8BPP].gif" show="1" pos="280,0,28,28" shortcuts="/fn" meaning="发怒" sprite="12"/>		
+		<Face filename="00013[28x28x8BPP].gif" show="1" pos="308,0,28,28" shortcuts="/tp" meaning="调皮" sprite="13"/>
+		<Face filename="00014[28x28x8BPP].gif" show="1" pos="336,0,28,28" shortcuts="/cy" meaning="呲牙" sprite="14"/>			
+		<Face filename="00015[28x28x8BPP].gif" show="1" pos="364,0,28,28" shortcuts="/jy" meaning="惊讶" sprite="15"/>		
+		<Face filename="00016[28x28x8BPP].gif" show="1" pos="392,0,28,28" shortcuts="/ng" meaning="难过" sprite="16"/>
+		
+		<!--第2行-->
+		<Face filename="00017[28x28x8BPP].gif" show="1" pos="0,28,28,28"   shortcuts="/kuk" meaning="酷"      sprite="17"/>
+		<Face filename="00018[28x28x8BPP].gif" show="1" pos="28,28,28,28"  shortcuts="/lengh" meaning="冷汗"  sprite="18"/>
+		<Face filename="00019[28x28x8BPP].gif" show="1" pos="56,28,28,28"  shortcuts="/zk" meaning="抓狂"     sprite="19"/>
+		<Face filename="00020[28x28x8BPP].gif" show="1" pos="84,28,28,28"  shortcuts="/tuu" meaning="吐"      sprite="20"/>
+		<Face filename="00021[28x28x8BPP].gif" show="1" pos="112,28,28,28" shortcuts="/tx" meaning="偷笑"     sprite="21"/>
+		<Face filename="00022[28x28x8BPP].gif" show="1" pos="140,28,28,28" shortcuts="/ka" meaning="可爱"     sprite="22"/>
+		<Face filename="00023[28x28x8BPP].gif" show="1" pos="168,28,28,28" shortcuts="/baiy" meaning="白眼"   sprite="23"/>
+		<Face filename="00024[28x28x8BPP].gif" show="1" pos="196,28,28,28" shortcuts="/am" meaning="傲慢"     sprite="24"/>		
+		<Face filename="00025[28x28x8BPP].gif" show="1" pos="224,28,28,28" shortcuts="/jie" meaning="饥饿"    sprite="25"/>
+		<Face filename="00026[28x28x8BPP].gif" show="1" pos="252,28,28,28" shortcuts="/kun" meaning="困"      sprite="26"/>
+		<Face filename="00027[28x28x8BPP].gif" show="1" pos="280,28,28,28" shortcuts="/jk" meaning="惊恐"     sprite="27"/>
+		<Face filename="00028[28x28x8BPP].gif" show="1" pos="308,28,28,28" shortcuts="/lh" meaning="流汗"     sprite="28"/>		
+		<Face filename="00029[28x28x8BPP].gif" show="1" pos="336,28,28,28" shortcuts="/hanx" meaning="憨笑"   sprite="29"/>		
+		<Face filename="00031[28x28x8BPP].gif" show="1" pos="364,28,28,28" shortcuts="/fendou" meaning="奋斗" sprite="31"/>
+		<Face filename="00032[28x28x8BPP].gif" show="1" pos="392,28,28,28" shortcuts="/zhm" meaning="咒骂"    sprite="32"/>
+		
+		<!--第3行-->
+		<Face filename="00033[28x28x8BPP].gif" show="1" pos="0,56,28,28"   shortcuts="/yiw" meaning="疑问"   sprite="33"/>
+		<Face filename="00034[28x28x8BPP].gif" show="1" pos="28,56,28,28"  shortcuts="/xu" meaning="嘘..."   sprite="34"/>
+		<Face filename="00035[28x28x8BPP].gif" show="1" pos="56,56,28,28"  shortcuts="/yun" meaning="晕"     sprite="35"/>		
+		<Face filename="00037[28x28x8BPP].gif" show="1" pos="84,56,28,28"  shortcuts="/shuai" meaning="衰"   sprite="37"/>		
+		<Face filename="00039[28x28x8BPP].gif" show="1" pos="112,56,28,28" shortcuts="/qiao" meaning="敲打"  sprite="39"/>
+		<Face filename="00040[28x28x8BPP].gif" show="1" pos="140,56,28,28" shortcuts="/zj" meaning="再见"    sprite="40"/>
+		<Face filename="00041[28x28x8BPP].gif" show="1" pos="168,56,28,28" shortcuts="/ch" meaning="擦汗"    sprite="41"/>
+		<Face filename="00042[28x28x8BPP].gif" show="1" pos="196,56,28,28" shortcuts="/kb" meaning="抠鼻"    sprite="42"/>		
+		<Face filename="00043[28x28x8BPP].gif" show="1" pos="224,56,28,28" shortcuts="/gz" meaning="鼓掌"    sprite="43"/>
+		<Face filename="00044[28x28x8BPP].gif" show="1" pos="252,56,28,28" shortcuts="/qd" meaning="糗大了"  sprite="44"/>
+		<Face filename="00045[28x28x8BPP].gif" show="1" pos="280,56,28,28" shortcuts="/huaix" meaning="坏笑" sprite="45"/>
+		<Face filename="00068[28x28x8BPP].gif" show="1" pos="308,56,28,28" shortcuts="/wzm" meaning="我最美"/><!--新加-->		
+		<Face filename="00047[28x28x8BPP].gif" show="1" pos="336,56,28,28" shortcuts="/yhh" meaning="右哼哼" sprite="47"/>
+		<Face filename="00048[28x28x8BPP].gif" show="1" pos="364,56,28,28" shortcuts="/hq" meaning="哈欠"    sprite="48"/>
+		<Face filename="00049[28x28x8BPP].gif" show="1" pos="392,56,28,28" shortcuts="/bs" meaning="鄙视"    sprite="49"/>
+		
+		<!--第4行-->
+		<Face filename="00050[28x28x8BPP].gif" show="1" pos="0,84,28,28"   shortcuts="/wq" meaning="委屈"    sprite="50"/>		
+		<Face filename="00052[28x28x8BPP].gif" show="1" pos="28,84,28,28"  shortcuts="/yx" meaning="阴险"    sprite="52"/>
+		<Face filename="00053[28x28x8BPP].gif" show="1" pos="56,84,28,28"  shortcuts="/qq" meaning="亲亲"    sprite="53"/>		
+		<Face filename="00057[28x28x8BPP].gif" show="1" pos="84,84,28,28"  shortcuts="/xk" meaning="笑哭"/><!--新加-->		
+		<Face filename="00058[28x28x8BPP].gif" show="1" pos="112,84,28,28" shortcuts="/doge" meaning="doge"/><!--新加-->		
+		<Face filename="00060[28x28x8BPP].gif" show="1" pos="140,84,28,28" shortcuts="/wn" meaning="无奈"/><!--新加-->		
+		<Face filename="00063[28x28x8BPP].gif" show="1" pos="168,84,28,28" shortcuts="/xyx" meaning="斜眼笑"/><!--新加-->
+		<Face filename="00064[28x28x8BPP].gif" show="1" pos="196,84,28,28" shortcuts="/px" meaning="喷血"/><!--新加-->		
+		<Face filename="00066[28x28x8BPP].gif" show="1" pos="224,84,28,28" shortcuts="/sr" meaning="骚扰"/><!--新加-->
+		<Face filename="00067[28x28x8BPP].gif" show="1" pos="252,84,28,28" shortcuts="/xjj" meaning="小纠结"/><!--新加-->
+		<Face filename="00105[28x28x8BPP].gif" show="1" pos="280,84,28,28" shortcuts="/aiq" meaning="爱情"   sprite="91"/>
+		<Face filename="00106[28x28x8BPP].gif" show="1" pos="308,84,28,28" shortcuts="/fw" meaning="飞吻"    sprite="92"/>
+		<Face filename="00110[28x28x8BPP].gif" show="1" pos="336,84,28,28" shortcuts="/zhq" meaning="转圈"   sprite="96"/>
+		<Face filename="00107[28x28x8BPP].gif" show="1" pos="364,84,28,28" shortcuts="/tiao" meaning="跳跳"  sprite="93"/>
+		<Face filename="00112[28x28x8BPP].gif" show="1" pos="392,84,28,28" shortcuts="/ht" meaning="回头"    sprite="98"/>
+		
+		<!--第5行-->
+		<Face filename="00069[28x28x8BPP].gif" show="1" pos="0,112,28,28"   shortcuts="/cd" meaning="菜刀"     sprite="56"/>			
+		<Face filename="00074[28x28x8BPP].gif" show="1" pos="28,112,28,28"  shortcuts="/cha" meaning="茶"/><!--新加-->
+		<Face filename="00075[28x28x8BPP].gif" show="1" pos="56,112,28,28"  shortcuts="/kf" meaning="咖啡"     sprite="61"/>		
+		<Face filename="00076[28x28x8BPP].gif" show="1" pos="84,112,28,28"  shortcuts="/fan" meaning="饭"      sprite="62"/>		
+		<Face filename="00077[28x28x8BPP].gif" show="1" pos="112,112,28,28" shortcuts="/zt" meaning="猪头"     sprite="63"/>		
+		<Face filename="00078[28x28x8BPP].gif" show="1" pos="140,112,28,28" shortcuts="/mg" meaning="玫瑰"     sprite="64"/>
+		<Face filename="00079[28x28x8BPP].gif" show="1" pos="168,112,28,28" shortcuts="/dx" meaning="凋谢"     sprite="65"/>		
+		<Face filename="00080[28x28x8BPP].gif" show="1" pos="196,112,28,28" shortcuts="/sa" meaning="示爱"     sprite="66"/>
+		<Face filename="00081[28x28x8BPP].gif" show="1" pos="224,112,28,28" shortcuts="/xin" meaning="爱心"    sprite="67"/>
+		<Face filename="00082[28x28x8BPP].gif" show="1" pos="252,112,28,28" shortcuts="/xs" meaning="心碎"     sprite="68"/>
+		<Face filename="00093[28x28x8BPP].gif" show="1" pos="280,112,28,28" shortcuts="/yb" meaning="拥抱"     sprite="79"/>
+		<Face filename="00085[28x28x8BPP].gif" show="1" pos="308,112,28,28" shortcuts="/zhd" meaning="炸弹"    sprite="71"/>
+		<Face filename="00089[28x28x8BPP].gif" show="1" pos="336,112,28,28" shortcuts="/ypbb" meaning="便便"   sprite="75"/>
+		<Face filename="00092[28x28x8BPP].gif" show="1" pos="364,112,28,28" shortcuts="/lw" meaning="礼物"     sprite="78"/>		
+		<Face filename="00133[28x28x8BPP].gif" show="1" pos="392,112,28,28" shortcuts="/hb" meaning="红包"/><!--新加-->
+		
+		<!--第6行-->
+		<Face filename="00094[28x28x8BPP].gif" show="1" pos="0,140,28,28"   shortcuts="/qiang" meaning="强"    sprite="80"/>
+		<Face filename="00095[28x28x8BPP].gif" show="1" pos="28,140,28,28"  shortcuts="/ruo" meaning="弱"      sprite="81"/>
+		<Face filename="00096[28x28x8BPP].gif" show="1" pos="56,140,28,28"  shortcuts="/ws" meaning="握手"     sprite="82"/>		
+		<Face filename="00097[28x28x8BPP].gif" show="1" pos="84,140,28,28"  shortcuts="/shl" meaning="胜利"    sprite="83"/>
+		<Face filename="00098[28x28x8BPP].gif" show="1" pos="112,140,28,28" shortcuts="/bq" meaning="抱拳"     sprite="84"/>
+		<Face filename="00099[28x28x8BPP].gif" show="1" pos="140,140,28,28" shortcuts="/gy" meaning="勾引"     sprite="85"/>
+		<Face filename="00100[28x28x8BPP].gif" show="1" pos="168,140,28,28" shortcuts="/qt" meaning="拳头"     sprite="86"/>
+		<Face filename="00101[28x28x8BPP].gif" show="1" pos="196,140,28,28" shortcuts="/cj" meaning="差劲"     sprite="87"/>		
+		<Face filename="00103[28x28x8BPP].gif" show="1" pos="224,140,28,28" shortcuts="/bu" meaning="NO"       sprite="89"/>
+		<Face filename="00104[28x28x8BPP].gif" show="1" pos="252,140,28,28" shortcuts="/hd" meaning="OK"       sprite="90"/>
+		<Face filename="00129[28x28x8BPP].gif" show="1" pos="280,140,28,28" shortcuts="/cp" meaning="钞票"/><!--新加-->
+		<Face filename="00134[28x28x8BPP].gif" show="1" pos="308,140,28,28" shortcuts="/xhx" meaning="河蟹"/><!--新加-->
+		<Face filename="00135[28x28x8BPP].gif" show="1" pos="336,140,28,28" shortcuts="/yt" meaning="羊驼"/><!--新加-->
+		<Face filename="00154[28x28x8BPP].gif" show="1" pos="364,140,28,28" shortcuts="/wulk" meaning="捂脸"/><!--新加-->
+		<Face filename="00155[28x28x8BPP].gif" show="1" pos="392,140,28,28" shortcuts="/dal" meaning="打脸"/><!--新加-->
+		
+		
+		<!--以下不可选择，但可以解析-->
+		<Face filename="00006[28x28x8BPP].gif" shortcuts="/ll" meaning="流泪"    sprite="6"/>	
+		<Face filename="00009[28x28x8BPP].gif" shortcuts="/shui" meaning="睡"    sprite="9"/>	
+		<Face filename="00030[28x28x8BPP].gif" shortcuts="/db" meaning="大兵"    sprite="30"/>
+		<Face filename="00036[28x28x8BPP].gif" shortcuts="/zhem" meaning="折磨"  sprite="36"/>
+		<Face filename="00038[28x28x8BPP].gif" shortcuts="/kl" meaning="骷髅"    sprite="38"/>
+		<Face filename="00046[28x28x8BPP].gif" shortcuts="/zhh" meaning="左哼哼" sprite="46"/>
+		<Face filename="00051[28x28x8BPP].gif" shortcuts="/kk" meaning="快哭了"  sprite="51"/>
+		<Face filename="00054[28x28x8BPP].gif" shortcuts="/xia" meaning="吓"     sprite="54"/>
+		<Face filename="00055[28x28x8BPP].gif" shortcuts="/kel" meaning="可怜"   sprite="55"/>		
+		<Face filename="00056[28x28x8BPP].gif" shortcuts="/zyj" meaning="眨眼睛"/><!--新加-->
+		<Face filename="00061[28x28x8BPP].gif" shortcuts="/ts" meaning="托腮"/><!--新加-->
+		<Face filename="00062[28x28x8BPP].gif" shortcuts="/mm" meaning="卖萌"/><!--新加-->
+		<Face filename="00065[28x28x8BPP].gif" shortcuts="/jx" meaning="惊喜"/><!--新加-->
+		<Face filename="00070[28x28x8BPP].gif" shortcuts="/xig" meaning="西瓜"   sprite="57"/>
+		<Face filename="00071[28x28x8BPP].gif" shortcuts="/pj" meaning="啤酒"    sprite="58"/>		
+		<Face filename="00072[28x28x8BPP].gif" shortcuts="/lq" meaning="篮球"    sprite="59"/>
+		<Face filename="00073[28x28x8BPP].gif" shortcuts="/pp" meaning="乒乓"    sprite="60"/>
+		<Face filename="00083[28x28x8BPP].gif" shortcuts="/dg" meaning="蛋糕"    sprite="69"/>
+		<Face filename="00084[28x28x8BPP].gif" shortcuts="/shd" meaning="闪电"   sprite="70"/>		
+		<Face filename="00086[28x28x8BPP].gif" shortcuts="/dao" meaning="刀"     sprite="72"/>
+		<Face filename="00087[28x28x8BPP].gif" shortcuts="/zq" meaning="足球"    sprite="73"/>
+		<Face filename="00088[28x28x8BPP].gif" shortcuts="/pch" meaning="瓢虫"   sprite="74"/>		
+		<Face filename="00090[28x28x8BPP].gif" shortcuts="/yl" meaning="月亮"    sprite="76"/>
+		<Face filename="00091[28x28x8BPP].gif" shortcuts="/ty" meaning="太阳"    sprite="77"/>
+		<Face filename="00102[28x28x8BPP].gif" shortcuts="/aini" meaning="爱你"  sprite="88"/>
+		<Face filename="00108[28x28x8BPP].gif" shortcuts="/fad" meaning="发抖"   sprite="94"/>		
+		<Face filename="00109[28x28x8BPP].gif" shortcuts="/oh" meaning="怄火"    sprite="95"/>		
+		<Face filename="00111[28x28x8BPP].gif" shortcuts="/kt" meaning="磕头"    sprite="97"/>		
+		<Face filename="00113[28x28x8BPP].gif" shortcuts="/tsh" meaning="跳绳"   sprite="99"/>
+		<Face filename="00114[28x28x8BPP].gif" shortcuts="/hsh" meaning="挥手"   sprite="100"/>
+		<Face filename="00115[28x28x8BPP].gif" shortcuts="/jd" meaning="激动"    sprite="101"/><!--新加-->
+		<Face filename="00116[28x28x8BPP].gif" shortcuts="/jw" meaning="街舞"    sprite="102"/>
+		<Face filename="00117[28x28x8BPP].gif" shortcuts="/xw" meaning="献吻"    sprite="103"/>
+		<Face filename="00118[28x28x8BPP].gif" shortcuts="/zuotj" meaning="左太极"  sprite="104"/>
+		<Face filename="00119[28x28x8BPP].gif" shortcuts="/youtj" meaning="右太极"  sprite="105"/>
+		<Face filename="00120[28x28x8BPP].gif" shortcuts="/shx" meaning="双喜"/><!--新加-->
+		<Face filename="00121[28x28x8BPP].gif" shortcuts="/bp" meaning="鞭炮"/><!--新加-->
+		<Face filename="00122[28x28x8BPP].gif" shortcuts="/dl" meaning="灯笼"/><!--新加-->
+		<Face filename="00123[28x28x8BPP].gif" shortcuts="/kg" meaning="K歌"/><!--新加-->
+		<Face filename="00124[28x28x8BPP].gif" shortcuts="/hec" meaning="喝彩"/><!--新加-->
+		<Face filename="00125[28x28x8BPP].gif" shortcuts="/baojin" meaning="爆筋"/><!--新加-->
+		<Face filename="00126[28x28x8BPP].gif" shortcuts="/bangbangt" meaning="棒棒糖"/><!--新加-->
+		<Face filename="00127[28x28x8BPP].gif" shortcuts="/hn" meaning="喝奶"/><!--新加-->
+		<Face filename="00128[28x28x8BPP].gif" shortcuts="/fj" meaning="飞机"/><!--新加-->		
+		<Face filename="00130[28x28x8BPP].gif" shortcuts="/yao" meaning="药"/><!--新加-->
+		<Face filename="00131[28x28x8BPP].gif" shortcuts="/shq" meaning="手枪"/><!--新加-->
+		<Face filename="00132[28x28x8BPP].gif" shortcuts="/dan" meaning="蛋"/><!--新加-->		
+		<Face filename="00136[28x28x8BPP].gif" shortcuts="/jh" meaning="菊花"/><!--新加-->
+		<Face filename="00137[28x28x8BPP].gif" shortcuts="/youl" meaning="幽灵"/><!--新加-->
+		<Face filename="00138[28x28x8BPP].gif" shortcuts="/daxiao" meaning="大笑"/><!--新加-->
+		<Face filename="00139[28x28x8BPP].gif" shortcuts="/bkx" meaning="不开心"/><!--新加-->
+		<Face filename="00140[28x28x8BPP].gif" shortcuts="/lm" meaning="冷漠"/><!--新加-->
+		<Face filename="00141[28x28x8BPP].gif" shortcuts="/ee" meaning="呃"/><!--新加-->
+		<Face filename="00142[28x28x8BPP].gif" shortcuts="/haob" meaning="好棒"/><!--新加-->
+		<Face filename="00143[28x28x8BPP].gif" shortcuts="/bt" meaning="拜托"/><!--新加-->
+		<Face filename="00144[28x28x8BPP].gif" shortcuts="/dz" meaning="点赞"/><!--新加-->
+		<Face filename="00145[28x28x8BPP].gif" shortcuts="/wl" meaning="无聊"/><!--新加-->
+		<Face filename="00146[28x28x8BPP].gif" shortcuts="/tl" meaning="托脸"/><!--新加-->
+		<Face filename="00147[28x28x8BPP].gif" shortcuts="/chi" meaning="吃"/><!--新加-->
+		<Face filename="00148[28x28x8BPP].gif" shortcuts="/songhua" meaning="送花"/><!--新加-->
+		<Face filename="00149[28x28x8BPP].gif" shortcuts="/hp" meaning="害怕"/><!--新加-->
+		<Face filename="00150[28x28x8BPP].gif" shortcuts="/hc" meaning="花痴"/><!--新加-->
+		<Face filename="00151[28x28x8BPP].gif" shortcuts="/xy" meaning="小样儿"/><!--新加-->
+		<Face filename="00152[28x28x8BPP].gif" shortcuts="/bl" meaning="飙泪"/><!--新加-->
+		<Face filename="00153[28x28x8BPP].gif" shortcuts="/wbk" meaning="我不看"/><!--新加-->	
+		
+		<!--新增32*32小狐狸表情-->
+		<Face filename="00200[32x32x8BPP].gif" shortcuts="/hlbs" meaning="鄙视"/><!--新加-->
+		<Face filename="00201[32x32x8BPP].gif" shortcuts="/hlsst" meaning="伸舌头"/><!--新加-->
+		<Face filename="00202[32x32x8BPP].gif" shortcuts="/hldx" meaning="大笑"/><!--新加-->
+		<Face filename="00203[32x32x8BPP].gif" shortcuts="/hlds" meaning="嘚瑟"/><!--新加-->
+		<Face filename="00204[32x32x8BPP].gif" shortcuts="/hljx" meaning="奸笑"/><!--新加-->
+		<Face filename="00205[32x32x8BPP].gif" shortcuts="/hlkt" meaning="磕头"/><!--新加-->
+		<Face filename="00206[32x32x8BPP].gif" shortcuts="/hlkb" meaning="抠鼻"/><!--新加-->
+		<Face filename="00207[32x32x8BPP].gif" shortcuts="/hlmm" meaning="卖萌"/><!--新加-->
+		<Face filename="00208[32x32x8BPP].gif" shortcuts="/hlnl" meaning="捏脸"/><!--新加-->
+		
+		<!--旧的没有新表情可以替换到部分如下-->
+		<Face filename="00627[24x24x8BPP].gif" shortcuts="/dianh" meaning="电话"/><!--旧的-->
+		<Face filename="00651[24x24x8BPP].gif" shortcuts="/xyer" meaning="雪人"/><!--旧的-->
+		<Face filename="00654[24x24x8BPP].gif" shortcuts="/nanr" meaning="男人"/><!--旧的-->
+		<Face filename="00653[24x24x8BPP].gif" shortcuts="/nvr" meaning="女人"/><!--旧的-->
+		<Face filename="00650[24x24x8BPP].gif" shortcuts="/qingt" meaning="晴天"/><!--旧的-->
+		<Face filename="00649[24x24x8BPP].gif" shortcuts="/yut" meaning="雨天"/><!--旧的-->
+		<Face filename="00628[24x24x8BPP].gif" shortcuts="/shij" meaning="时间"/><!--旧的-->
+		<Face filename="00613[24x24x8BPP].gif" shortcuts="/yiny" meaning="音乐"/><!--旧的-->
+				
+		<!--自定义gif以99开头-->
+		<Face filename="99001[24x24x8BPP].gif" shortcuts="/jueyi" meaning="绝艺"/><!--旧的-->
+		
+	</NormalFace>
+</Skin>
