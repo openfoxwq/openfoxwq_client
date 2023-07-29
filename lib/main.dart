@@ -1,6 +1,7 @@
 import 'package:fixnum/fixnum.dart';
 import 'package:openfoxwq_client/provider/chat.dart';
 import 'package:openfoxwq_client/provider/game.dart';
+import 'package:openfoxwq_client/provider/mock/automatch.dart';
 import 'package:openfoxwq_client/provider/mock/chat.dart';
 import 'package:openfoxwq_client/provider/mock/game.dart';
 import 'package:openfoxwq_client/provider/mock/mock_init.dart';
@@ -63,7 +64,7 @@ void main() async {
       Int64(101): Int64(5456),
       Int64(102): Int64(5789),
     }),
-    currentAutomatchPresetProvider.overrideWith((ref) => 100),
+    currentAutomatchPresetProvider.overrideWith(() => CurrentAutomatchPresetMock()),
     globalChatProvider.overrideWith(() => GlobalChatMock()),
     gamesProvider.overrideWith(() => GamesMock()),
   ] : <Override>[];

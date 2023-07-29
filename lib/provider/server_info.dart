@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:openfoxwq_client/provider/app_settings.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:fixnum/fixnum.dart';
 
@@ -75,7 +76,24 @@ class AutomatchPresets extends _$AutomatchPresets {
 
 final automatchPopulationProvider = StateProvider<Map<Int64, Int64>>((ref) => {});
 
-final currentAutomatchPresetProvider = StateProvider<int?>((ref) => null);
+@riverpod
+class CurrentAutomatchPreset extends _$CurrentAutomatchPreset {
+  @override
+  int? build() {
+    final presets = ref.watch(automatchPresetsProvider);
+    if (presets.isEmpty) {
+      return null;
+    }
+    final prefPreset = ref.watch(appSettingsProvider.select((pref) => pref.automatchPresetId));
+    final curPreset = presets.firstWhere((p) => p.id == prefPreset, orElse: () => presets.first);
+    return curPreset.id;
+  }
+
+  void set(int id) {
+    state = id;
+    ref.read(appSettingsProvider.notifier).setAutomatchPreset(id);
+  }
+}
 
 final automatchActiveProvider = StateProvider<bool>((ref) => false);
 

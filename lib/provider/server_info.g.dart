@@ -54,4 +54,22 @@ final automatchPresetsProvider = AutoDisposeNotifierProvider<AutomatchPresets,
 );
 
 typedef _$AutomatchPresets = AutoDisposeNotifier<List<AutomatchPreset>>;
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+String _$currentAutomatchPresetHash() =>
+    r'15019c1f97b0da109cb72ad3d3faf649f79a41b2';
+
+/// See also [CurrentAutomatchPreset].
+@ProviderFor(CurrentAutomatchPreset)
+final currentAutomatchPresetProvider =
+    AutoDisposeNotifierProvider<CurrentAutomatchPreset, int?>.internal(
+  CurrentAutomatchPreset.new,
+  name: r'currentAutomatchPresetProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$currentAutomatchPresetHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$CurrentAutomatchPreset = AutoDisposeNotifier<int?>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member

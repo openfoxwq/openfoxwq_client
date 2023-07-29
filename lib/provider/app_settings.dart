@@ -31,6 +31,7 @@ class Settings with _$Settings {
     required bool rememberPassword,
     required BoardStyle boardStyle,
     required StoneStyle stoneStyle,
+    required int automatchPresetId,
   }) = _Settings;
 }
 
@@ -75,6 +76,7 @@ class AppSettings extends _$AppSettings {
       rememberPassword: prefs.getBool('rememberPassword') ?? false,
       boardStyle: (boardStyleIndex != null) ? BoardStyle.values[boardStyleIndex] : BoardStyle.fox,
       stoneStyle: (stoneStyleIndex != null) ? StoneStyle.values[stoneStyleIndex] : StoneStyle.fox,
+      automatchPresetId: prefs.getInt('automatchPresetId') ?? -1,
     );
   }
 
@@ -106,5 +108,10 @@ class AppSettings extends _$AppSettings {
   void setStoneStyle(StoneStyle style) {
     state = state.copyWith(stoneStyle: style);
     ref.read(sharedPreferencesProvider).setInt('stoneStyle', style.index);
+  }
+
+  void setAutomatchPreset(int id) {
+    state = state.copyWith(automatchPresetId: id);
+    ref.read(sharedPreferencesProvider).setInt('automatchPresetId', id);
   }
 }

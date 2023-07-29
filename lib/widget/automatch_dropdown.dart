@@ -32,7 +32,9 @@ class AutomatchDropdown extends ConsumerWidget {
       elevation: 16,
       items: items.toList(),
       onChanged: (int? id) {
-        ref.read(currentAutomatchPresetProvider.notifier).state = id;
+        if (id != null) {
+          ref.read(currentAutomatchPresetProvider.notifier).set(id);
+        }
       },
     );
   }
