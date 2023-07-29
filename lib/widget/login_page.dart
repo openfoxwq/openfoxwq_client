@@ -226,19 +226,6 @@ class LoginPage extends ConsumerWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    TextButton.icon(
-                      onPressed: () => launchUrlString('https://discord.gg/RG2KquNWKE'),
-                      icon: SizedBox(
-                        width: 24,
-                        height: 24,
-                        child: Image.asset('assets/misc/discord-mark-blue.png', 
-                          isAntiAlias: true, 
-                          filterQuality: FilterQuality.high,
-                        ),
-                      ), 
-                      label: Text(loc.joinDiscord),
-                    ),
                     Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: Row(
@@ -250,6 +237,28 @@ class LoginPage extends ConsumerWidget {
                           ),
                         ],
                       ),
+                    ),
+                    const Divider(thickness: 2.0, height: 2.0),
+                    TextButton.icon(
+                      onPressed: () => launchUrlString('https://discord.gg/RG2KquNWKE'),
+                      icon: SizedBox(
+                        child: Image.asset('assets/misc/discord-mark-blue.png'),
+                      ), 
+                      label: Text(loc.joinDiscord),
+                    ),
+                    TextButton.icon(
+                      onPressed: () => launchUrlString('https://github.com/openfoxwq/openfoxwq_client'),
+                      icon: SizedBox(
+                        child: Image.asset('assets/misc/github-mark.png'),
+                      ), 
+                      label: Text(loc.contributeGitHub),
+                    ),
+                    TextButton.icon(
+                      onPressed: () => launchUrlString('https://www.buymeacoffee.com/ale64bit'),
+                      icon: SizedBox(
+                        child: Image.asset('assets/misc/bmc-logo-no-background.png'),
+                      ), 
+                      label: Text('Buy me a coffee'),
                     ),
                     const SizedBox(height: 8),
                   ],
