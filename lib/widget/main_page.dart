@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:openfoxwq_client/generated/proto/fe.pb.dart';
@@ -188,28 +189,68 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           ),
         );
 
+        final curRoomIsNavigable = ref.watch(currentRoomProvider.select((room) => room.isBroadcast || (room.isMatch && room.state == RoomState.complete)));
+        final curRoomId = ref.watch(currentRoomProvider.select((room) => room.id));
+
+        final tabBar = CallbackShortcuts(
+          bindings: <ShortcutActivator, VoidCallback>{
+            const SingleActivator(LogicalKeyboardKey.home): () {
+              if (curRoomIsNavigable) {
+                ref.read(roomByIdProvider(curRoomId).notifier).goToBeginning();
+              }
+            },
+            const SingleActivator(LogicalKeyboardKey.pageUp): () {
+              if (curRoomIsNavigable) {
+                ref.read(roomByIdProvider(curRoomId).notifier).goToPreviousMoves();
+              }
+            },
+            const SingleActivator(LogicalKeyboardKey.arrowLeft): () {
+              if (curRoomIsNavigable) {
+                ref.read(roomByIdProvider(curRoomId).notifier).goToPreviousMove();
+              }
+            },
+            const SingleActivator(LogicalKeyboardKey.arrowRight): () {
+              if (curRoomIsNavigable) {
+                ref.read(roomByIdProvider(curRoomId).notifier).goToNextMove();
+              }
+            },
+            const SingleActivator(LogicalKeyboardKey.pageDown): () {
+              if (curRoomIsNavigable) {
+                ref.read(roomByIdProvider(curRoomId).notifier).goToNextMoves();
+              }
+            },
+            const SingleActivator(LogicalKeyboardKey.end): () {
+              if (curRoomIsNavigable) {
+                ref.read(roomByIdProvider(curRoomId).notifier).goToLastMove();
+              }
+            },
+          },
+          child: TabBar(
+            controller: _tabController,
+            labelColor: Theme.of(context).colorScheme.primaryContainer,
+            indicatorSize: TabBarIndicatorSize.tab,
+            indicator: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            isScrollable: true,
+            tabs: tabs,
+            onTap: (index) {
+              if (index < defaultTabs.length) {
+                ref.read(currentRoomIndexProvider.notifier).state = -1;
+              } else {
+                ref.read(currentRoomIndexProvider.notifier).state =
+                    index - defaultTabs.length;
+              }
+            },
+          ),
+        );
+
         return Scaffold(
           backgroundColor: Colors.black,
           appBar: AppBar(
             toolbarHeight: 40,
-            title: TabBar(
-              controller: _tabController,
-              labelColor: Theme.of(context).colorScheme.primaryContainer,
-              indicatorSize: TabBarIndicatorSize.tab,
-              indicator: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              isScrollable: true,
-              tabs: tabs,
-              onTap: (index) {
-                if (index < defaultTabs.length) {
-                  ref.read(currentRoomIndexProvider.notifier).state = -1;
-                } else {
-                  ref.read(currentRoomIndexProvider.notifier).state = index - defaultTabs.length;
-                }
-              },
-            ),
+            title: tabBar,
             leading: Builder(
               builder: (BuildContext context) {
                 return IconButton(

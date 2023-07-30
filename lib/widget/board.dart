@@ -669,27 +669,30 @@ class Board extends ConsumerWidget {
       ),
     );
 
-    return Center(
-      child: AspectRatio(
-        aspectRatio: 1.0,
-        child: Container(
-          decoration: boxDecoration,
-          child: CustomPaint(
-            painter: _BoardLinesPainter(settings.boardSize, settings.boardSize),
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: settings.boardSize,
-                childAspectRatio: 1.0,
-                crossAxisSpacing: 0.3,
-                mainAxisSpacing: 0.3,
+    return Focus(
+      descendantsAreFocusable: false,
+      child: Center(
+        child: AspectRatio(
+          aspectRatio: 1.0,
+          child: Container(
+            decoration: boxDecoration,
+            child: CustomPaint(
+              painter: _BoardLinesPainter(settings.boardSize, settings.boardSize),
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: settings.boardSize,
+                  childAspectRatio: 1.0,
+                  crossAxisSpacing: 0.3,
+                  mainAxisSpacing: 0.3,
+                ),
+                itemCount: settings.boardSize * settings.boardSize,
+                itemBuilder: (context, i) {
+                  final r = i ~/ settings.boardSize;
+                  final c = i % settings.boardSize;
+                  return BoardPoint(r: r, c: c);
+                },
+                physics: const NeverScrollableScrollPhysics(),
               ),
-              itemCount: settings.boardSize * settings.boardSize,
-              itemBuilder: (context, i) {
-                final r = i ~/ settings.boardSize;
-                final c = i % settings.boardSize;
-                return BoardPoint(r: r, c: c);
-              },
-              physics: const NeverScrollableScrollPhysics(),
             ),
           ),
         ),
