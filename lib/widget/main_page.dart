@@ -192,7 +192,27 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         final curRoomIsNavigable = ref.watch(currentRoomProvider.select((room) => room.isBroadcast || (room.isMatch && room.state == RoomState.complete)));
         final curRoomId = ref.watch(currentRoomProvider.select((room) => room.id));
 
-        final tabBar = CallbackShortcuts(
+        final tabBar = TabBar(
+          controller: _tabController,
+          labelColor: Theme.of(context).colorScheme.primaryContainer,
+          indicatorSize: TabBarIndicatorSize.tab,
+          indicator: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Theme.of(context).colorScheme.primary,
+          ),
+          isScrollable: true,
+          tabs: tabs,
+          onTap: (index) {
+            if (index < defaultTabs.length) {
+              ref.read(currentRoomIndexProvider.notifier).state = -1;
+            } else {
+              ref.read(currentRoomIndexProvider.notifier).state =
+                  index - defaultTabs.length;
+            }
+          },
+        );
+
+        return CallbackShortcuts(
           bindings: <ShortcutActivator, VoidCallback>{
             const SingleActivator(LogicalKeyboardKey.home): () {
               if (curRoomIsNavigable) {
@@ -225,74 +245,57 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
               }
             },
           },
-          child: TabBar(
-            controller: _tabController,
-            labelColor: Theme.of(context).colorScheme.primaryContainer,
-            indicatorSize: TabBarIndicatorSize.tab,
-            indicator: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            isScrollable: true,
-            tabs: tabs,
-            onTap: (index) {
-              if (index < defaultTabs.length) {
-                ref.read(currentRoomIndexProvider.notifier).state = -1;
-              } else {
-                ref.read(currentRoomIndexProvider.notifier).state =
-                    index - defaultTabs.length;
-              }
-            },
-          ),
-        );
-
-        return Scaffold(
-          backgroundColor: Colors.black,
-          appBar: AppBar(
-            toolbarHeight: 40,
-            title: tabBar,
-            leading: Builder(
-              builder: (BuildContext context) {
-                return IconButton(
-                  icon: const Icon(Icons.settings),
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
+          child: FocusScope(
+            autofocus: true,
+            child: Scaffold(
+              backgroundColor: Colors.black,
+              appBar: AppBar(
+                toolbarHeight: 40,
+                title: tabBar,
+                leading: Builder(
+                  builder: (BuildContext context) {
+                    return IconButton(
+                      icon: const Icon(Icons.settings),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                      tooltip: loc.settingsSettings,
+                    );
                   },
-                  tooltip: loc.settingsSettings,
-                );
-              },
+                ),
+                actions: (kIsWeb ? <Widget>[
+                  IconButton(
+                    icon: const Icon(Icons.fullscreen),
+                    tooltip: 'Fullscreen',
+                    onPressed: () {
+                      final screenUtil = ScreenUtil();
+                      screenUtil.enterFullscreen();
+                    },
+                  ),
+                ] : <Widget>[]) + <Widget>[
+                  IconButton(
+                    icon: const Icon(Icons.account_circle),
+                    tooltip: loc.myAccount,
+                    onPressed: () {
+                      final login = ref.read(loginStateProvider.select((loginState) => loginState));
+                      ref.read(selectedPlayerProvider.notifier).set(PlayerEntry.ofPlayerInfo(login.playerInfo!));
+          
+                      final req = FeRequest();
+                      req.getPlayerInfo = FeGetPlayerInfoRequest();
+                      req.getPlayerInfo.id = login.playerInfo!.playerId;
+                      ref.read(feClientProvider).send(req);
+                    },
+                  ),
+                ] 
+              ),
+              body: TabBarView(
+                controller: _tabController,
+                children: tabViews,
+              ),
+              drawer: const SettingsDrawer(),
+              bottomNavigationBar: bottomAppBar,
             ),
-            actions: (kIsWeb ? <Widget>[
-              IconButton(
-                icon: const Icon(Icons.fullscreen),
-                tooltip: 'Fullscreen',
-                onPressed: () {
-                  final screenUtil = ScreenUtil();
-                  screenUtil.enterFullscreen();
-                },
-              ),
-            ] : <Widget>[]) + <Widget>[
-              IconButton(
-                icon: const Icon(Icons.account_circle),
-                tooltip: loc.myAccount,
-                onPressed: () {
-                  final login = ref.read(loginStateProvider.select((loginState) => loginState));
-                  ref.read(selectedPlayerProvider.notifier).set(PlayerEntry.ofPlayerInfo(login.playerInfo!));
-
-                  final req = FeRequest();
-                  req.getPlayerInfo = FeGetPlayerInfoRequest();
-                  req.getPlayerInfo.id = login.playerInfo!.playerId;
-                  ref.read(feClientProvider).send(req);
-                },
-              ),
-            ] 
           ),
-          body: TabBarView(
-            controller: _tabController,
-            children: tabViews,
-          ),
-          drawer: const SettingsDrawer(),
-          bottomNavigationBar: bottomAppBar,
         );
       },
     );
