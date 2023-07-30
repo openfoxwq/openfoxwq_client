@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:openfoxwq_client/provider/app_settings.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:openfoxwq_client/provider/server_info.dart';
@@ -45,11 +46,7 @@ class LoginState extends _$LoginState {
   );
 
   void loginSuccessful(int id, commonpb.PlayerInfo info) async {
-    // if (ref.read(appSettingsProvider.select((settings) => settings.rememberPassword))) {
-      // TODO: store creds
-      // await ref.read(secureStorageProvider).write(key: 'username', value: state.username);
-      // await ref.read(secureStorageProvider).write(key: 'password', value: state.password);
-    // }
+    ref.read(appSettingsProvider.notifier).setCredentials(state.username ?? '', state.password ?? '');
     state = LoginInfo(
       playerId: id,
       playerInfo: info,
@@ -88,8 +85,6 @@ class StoredCredentials with _$StoredCredentials {
     required String password,
   }) = _StoredCredentials;
 }
-
-final storedCredentialsProvider = Provider<StoredCredentials>((ref) => const StoredCredentials(username: '', password: ''));
 
 final registerUrlProvider = StateProvider<String>((ref) => "");
 

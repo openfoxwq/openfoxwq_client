@@ -23,6 +23,8 @@ mixin _$Settings {
   BoardStyle get boardStyle => throw _privateConstructorUsedError;
   StoneStyle get stoneStyle => throw _privateConstructorUsedError;
   int get automatchPresetId => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
+  String? get password => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SettingsCopyWith<Settings> get copyWith =>
@@ -41,7 +43,9 @@ abstract class $SettingsCopyWith<$Res> {
       bool rememberPassword,
       BoardStyle boardStyle,
       StoneStyle stoneStyle,
-      int automatchPresetId});
+      int automatchPresetId,
+      String? username,
+      String? password});
 }
 
 /// @nodoc
@@ -64,6 +68,8 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
     Object? boardStyle = null,
     Object? stoneStyle = null,
     Object? automatchPresetId = null,
+    Object? username = freezed,
+    Object? password = freezed,
   }) {
     return _then(_value.copyWith(
       locale: null == locale
@@ -94,6 +100,14 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
           ? _value.automatchPresetId
           : automatchPresetId // ignore: cast_nullable_to_non_nullable
               as int,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      password: freezed == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -112,7 +126,9 @@ abstract class _$$_SettingsCopyWith<$Res> implements $SettingsCopyWith<$Res> {
       bool rememberPassword,
       BoardStyle boardStyle,
       StoneStyle stoneStyle,
-      int automatchPresetId});
+      int automatchPresetId,
+      String? username,
+      String? password});
 }
 
 /// @nodoc
@@ -133,6 +149,8 @@ class __$$_SettingsCopyWithImpl<$Res>
     Object? boardStyle = null,
     Object? stoneStyle = null,
     Object? automatchPresetId = null,
+    Object? username = freezed,
+    Object? password = freezed,
   }) {
     return _then(_$_Settings(
       locale: null == locale
@@ -163,6 +181,14 @@ class __$$_SettingsCopyWithImpl<$Res>
           ? _value.automatchPresetId
           : automatchPresetId // ignore: cast_nullable_to_non_nullable
               as int,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      password: freezed == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -177,7 +203,9 @@ class _$_Settings implements _Settings {
       required this.rememberPassword,
       required this.boardStyle,
       required this.stoneStyle,
-      required this.automatchPresetId});
+      required this.automatchPresetId,
+      required this.username,
+      required this.password});
 
   @override
   final Locale locale;
@@ -193,10 +221,14 @@ class _$_Settings implements _Settings {
   final StoneStyle stoneStyle;
   @override
   final int automatchPresetId;
+  @override
+  final String? username;
+  @override
+  final String? password;
 
   @override
   String toString() {
-    return 'Settings(locale: $locale, effectVolume: $effectVolume, voiceVolume: $voiceVolume, rememberPassword: $rememberPassword, boardStyle: $boardStyle, stoneStyle: $stoneStyle, automatchPresetId: $automatchPresetId)';
+    return 'Settings(locale: $locale, effectVolume: $effectVolume, voiceVolume: $voiceVolume, rememberPassword: $rememberPassword, boardStyle: $boardStyle, stoneStyle: $stoneStyle, automatchPresetId: $automatchPresetId, username: $username, password: $password)';
   }
 
   @override
@@ -216,12 +248,25 @@ class _$_Settings implements _Settings {
             (identical(other.stoneStyle, stoneStyle) ||
                 other.stoneStyle == stoneStyle) &&
             (identical(other.automatchPresetId, automatchPresetId) ||
-                other.automatchPresetId == automatchPresetId));
+                other.automatchPresetId == automatchPresetId) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, locale, effectVolume,
-      voiceVolume, rememberPassword, boardStyle, stoneStyle, automatchPresetId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      locale,
+      effectVolume,
+      voiceVolume,
+      rememberPassword,
+      boardStyle,
+      stoneStyle,
+      automatchPresetId,
+      username,
+      password);
 
   @JsonKey(ignore: true)
   @override
@@ -238,7 +283,9 @@ abstract class _Settings implements Settings {
       required final bool rememberPassword,
       required final BoardStyle boardStyle,
       required final StoneStyle stoneStyle,
-      required final int automatchPresetId}) = _$_Settings;
+      required final int automatchPresetId,
+      required final String? username,
+      required final String? password}) = _$_Settings;
 
   @override
   Locale get locale;
@@ -254,6 +301,10 @@ abstract class _Settings implements Settings {
   StoneStyle get stoneStyle;
   @override
   int get automatchPresetId;
+  @override
+  String? get username;
+  @override
+  String? get password;
   @override
   @JsonKey(ignore: true)
   _$$_SettingsCopyWith<_$_Settings> get copyWith =>

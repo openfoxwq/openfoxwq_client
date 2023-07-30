@@ -20,7 +20,7 @@ final canLoginProvider = AutoDisposeProvider<bool>.internal(
 );
 
 typedef CanLoginRef = AutoDisposeProviderRef<bool>;
-String _$loginStateHash() => r'6a7010b4e7399f27c70918d62fec568d55f53396';
+String _$loginStateHash() => r'00fea3a6d028e77f14af6d083e334e93c36b3b1c';
 
 /// See also [LoginState].
 @ProviderFor(LoginState)

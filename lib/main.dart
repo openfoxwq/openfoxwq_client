@@ -73,7 +73,6 @@ void main() async {
     ProviderScope(
       overrides: [
         sharedPreferencesProvider.overrideWithValue(prefs),
-        storedCredentialsProvider.overrideWithValue(const StoredCredentials(username: '', password: '')),
       ] + mockOverrides,
       child: const MyApp(),
     ),
@@ -93,7 +92,6 @@ class MyApp extends ConsumerWidget {
 
     final settings = ref.watch(appSettingsProvider);
     final loginInfo = ref.watch(loginStateProvider);
-    final storedCreds = ref.watch(storedCredentialsProvider);
 
     return MaterialApp(
       title: 'openfoxwq',
@@ -105,10 +103,7 @@ class MyApp extends ConsumerWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: settings.locale,
-      home: loginInfo.playerId != 0 ? const MainPage() : LoginPage(
-        initialUsername: storedCreds.username,
-        initialPassword: storedCreds.password,
-      ),
+      home: loginInfo.playerId != 0 ? const MainPage() : LoginPage(),
     );
   }
 }

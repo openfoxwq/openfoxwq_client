@@ -32,6 +32,8 @@ class Settings with _$Settings {
     required BoardStyle boardStyle,
     required StoneStyle stoneStyle,
     required int automatchPresetId,
+    required String? username,
+    required String? password,
   }) = _Settings;
 }
 
@@ -77,6 +79,8 @@ class AppSettings extends _$AppSettings {
       boardStyle: (boardStyleIndex != null) ? BoardStyle.values[boardStyleIndex] : BoardStyle.fox,
       stoneStyle: (stoneStyleIndex != null) ? StoneStyle.values[stoneStyleIndex] : StoneStyle.fox,
       automatchPresetId: prefs.getInt('automatchPresetId') ?? -1,
+      username: prefs.getString('username'),
+      password: prefs.getString('password'),
     );
   }
 
@@ -113,5 +117,16 @@ class AppSettings extends _$AppSettings {
   void setAutomatchPreset(int id) {
     state = state.copyWith(automatchPresetId: id);
     ref.read(sharedPreferencesProvider).setInt('automatchPresetId', id);
+  }
+
+  void setCredentials(String username, String password) {
+    if (state.rememberPassword) {
+      state = state.copyWith(
+        username: username,
+        password: password,
+      );
+      ref.read(sharedPreferencesProvider).setString('username', username);
+      ref.read(sharedPreferencesProvider).setString('password', password);
+    }
   }
 }

@@ -33,16 +33,35 @@ If you have any questions, do not hesitate to contact me at ale64bit@proton.me o
 Sincerely,
 The openfoxwq author.""";
 
-class LoginPage extends ConsumerWidget {
-  final TextEditingController _usernameTextController;
-  final TextEditingController _passwordTextController;
-
-  LoginPage({super.key, required String initialUsername, required String initialPassword}) 
-    : _usernameTextController = TextEditingController(text: initialUsername),
-      _passwordTextController = TextEditingController(text: initialPassword);
+class LoginPage extends ConsumerStatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  LoginPageState createState() => LoginPageState();
+}
+
+class LoginPageState extends ConsumerState<LoginPage> {
+  late TextEditingController _usernameTextController;
+  late TextEditingController _passwordTextController;
+
+  @override
+  void initState() {
+    final username = ref.read(appSettingsProvider.select((settings) => settings.username));
+    final password = ref.read(appSettingsProvider.select((settings) => settings.password));
+    _usernameTextController = TextEditingController(text: username);
+    _passwordTextController = TextEditingController(text: password);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _usernameTextController.dispose();
+    _passwordTextController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
 
     ref.listen(connectionErrorProvider, (previous, next) { 
@@ -215,7 +234,7 @@ class LoginPage extends ConsumerWidget {
                         onFieldSubmitted: (_) => doLogin(),
                       ),
                     ),
-                    // rememberPasswordCheckbox,
+                    rememberPasswordCheckbox,
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
