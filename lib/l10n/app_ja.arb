@@ -135,7 +135,22 @@
       "byoyomiTime": { "type": "num" }
     }
   },
-  
+
+  "automatchPresetMainTime": "{time}分}",
+  "@automatchPresetMainTime": {
+    "placeholders": {
+      "time": {"type" : "num" }
+    }
+  },
+
+  "automatchPresetByoyomi": "{byoyomiTime}秒",
+  "@automatchPresetByoyomi": {
+    "placeholders": {
+      "byoyomiPeriods": { "type": "num" },
+      "byoyomiTime": { "type": "num" }
+    }
+  },
+
   "chatMsgTypeSystem": "システム",
   "chatMsgTypeNotice": "ヒント",
   "chatMsgTypeGame": "の推測対局進行中",
