@@ -136,6 +136,21 @@
     }
   },
   
+  "automatchPresetMainTime": "{time}分}",
+  "@automatchPresetMainTime": {
+    "placeholders": {
+      "time": {"type" : "num" }
+    }
+  },
+
+  "automatchPresetByoyomi": "{byoyomiTime}秒",
+  "@automatchPresetByoyomi": {
+    "placeholders": {
+      "byoyomiPeriods": { "type": "num" },
+      "byoyomiTime": { "type": "num" }
+    }
+  },
+
   "chatMsgTypeSystem": "系统",
   "chatMsgTypeNotice": "提示",
   "chatMsgTypeGame": "的支持对局进行中",

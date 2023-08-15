@@ -135,6 +135,21 @@
       "byoyomiTime": { "type": "num" }
     }
   },
+
+    "automatchPresetMainTime": "{time}分}",
+  "@automatchPresetMainTime": {
+    "placeholders": {
+      "time": {"type" : "num" }
+    }
+  },
+
+  "automatchPresetByoyomi": "{byoyomiTime}秒",
+  "@automatchPresetByoyomi": {
+    "placeholders": {
+      "byoyomiPeriods": { "type": "num" },
+      "byoyomiTime": { "type": "num" }
+    }
+  },
   
   "chatMsgTypeSystem": "系統",
   "chatMsgTypeNotice": "提示",

@@ -17,12 +17,36 @@ class AutomatchDropdown extends ConsumerWidget {
     final items = presets.map((preset) {
       return DropdownMenuItem<int>(
         value: preset.id,
-        child: Row(children: [
-          const SizedBox(width: 8),
-          Text(loc.automatchPresetNameStandard(preset.boardSize, preset.boardSize, preset.mainTimeSecs~/60, preset.byoyomiPeriods, preset.byoyomiTimeSecs)),
-          const SizedBox(width: 40),
-          const Icon(Icons.people),
-          Text((population[Int64(preset.id)] ?? 0).toString()),
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Container(
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                Container(
+                    alignment: Alignment.centerRight,
+                    width: 50,
+                    child: Text('${preset.boardSize}x${preset.boardSize}')),
+                Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5),
+                    child: Text('—')),
+                Container(
+                    alignment: Alignment.centerLeft,
+                    width: 60,
+                    child: Text(loc
+                        .automatchPresetMainTime(preset.mainTimeSecs ~/ 60))),
+                Text(loc.automatchPresetByoyomi(
+                    preset.byoyomiPeriods, preset.byoyomiTimeSecs)),
+              ])),
+          SizedBox(width: 20),
+          Container(
+            width: 70,
+            child: Row(children: [
+              const Icon(Icons.people),
+              SizedBox(width: 5),
+              Text((population[Int64(preset.id)] ?? 0).toString())
+            ]),
+          )
         ]),
       );
     });
