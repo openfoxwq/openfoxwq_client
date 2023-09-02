@@ -52,28 +52,32 @@ void main() async {
 
   final prefs = await SharedPreferences.getInstance();
 
-  final mockOverrides = kMockUIMode ? <Override>[
-    roomTickProvider.overrideWith((ref) {}),
-    feClientProvider.overrideWithValue(NopFeClient()),
-    feResponsesProvider.overrideWith((ref) {}),
-    loginStateProvider.overrideWith(() => LoginStateMock()),
-    onlinePlayerCount.overrideWith((ref) => 12345),
-    automatchPresetsProvider.overrideWith(() => AutomatchPresetsMock()),
-    automatchPopulationProvider.overrideWith((ref) => {
-      Int64(100): Int64(5123),
-      Int64(101): Int64(5456),
-      Int64(102): Int64(5789),
-    }),
-    currentAutomatchPresetProvider.overrideWith(() => CurrentAutomatchPresetMock()),
-    globalChatProvider.overrideWith(() => GlobalChatMock()),
-    gamesProvider.overrideWith(() => GamesMock()),
-  ] : <Override>[];
+  final mockOverrides = kMockUIMode
+      ? <Override>[
+          roomTickProvider.overrideWith((ref) {}),
+          feClientProvider.overrideWithValue(NopFeClient()),
+          feResponsesProvider.overrideWith((ref) {}),
+          loginStateProvider.overrideWith(() => LoginStateMock()),
+          onlinePlayerCount.overrideWith((ref) => 12345),
+          automatchPresetsProvider.overrideWith(() => AutomatchPresetsMock()),
+          automatchPopulationProvider.overrideWith((ref) => {
+                Int64(100): Int64(5123),
+                Int64(101): Int64(5456),
+                Int64(102): Int64(5789),
+              }),
+          currentAutomatchPresetProvider
+              .overrideWith(() => CurrentAutomatchPresetMock()),
+          globalChatProvider.overrideWith(() => GlobalChatMock()),
+          gamesProvider.overrideWith(() => GamesMock()),
+        ]
+      : <Override>[];
 
   runApp(
     ProviderScope(
       overrides: [
-        sharedPreferencesProvider.overrideWithValue(prefs),
-      ] + mockOverrides,
+            sharedPreferencesProvider.overrideWithValue(prefs),
+          ] +
+          mockOverrides,
       child: const MyApp(),
     ),
   );
@@ -95,11 +99,11 @@ class MyApp extends ConsumerWidget {
 
     return MaterialApp(
       title: 'openfoxwq',
-       theme: ThemeData(
-         useMaterial3: true,
-         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-         pageTransitionsTheme: NoTransitionsOnWeb(),
-       ),
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        pageTransitionsTheme: NoTransitionsOnWeb(),
+      ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: settings.locale,

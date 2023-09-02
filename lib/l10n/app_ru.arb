@@ -135,6 +135,21 @@
       "byoyomiTime": { "type": "num" }
     }
   },
+
+  "automatchPresetMainTime": "{time}мин}",
+  "@automatchPresetMainTime": {
+    "placeholders": {
+      "time": {"type" : "num" }
+    }
+  },
+
+  "automatchPresetByoyomi": "{byoyomiPeriods}×{byoyomiTime}с",
+  "@automatchPresetByoyomi": {
+    "placeholders": {
+      "byoyomiPeriods": { "type": "num" },
+      "byoyomiTime": { "type": "num" }
+    }
+  },
   
   "chatMsgTypeSystem": "Система",
   "chatMsgTypeNotice": "Уведомление",
