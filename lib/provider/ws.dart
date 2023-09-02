@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:openfoxwq_client/provider/app_settings.dart';
 import 'package:openfoxwq_client/provider/challenge.dart';
 import 'package:openfoxwq_client/provider/chat.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

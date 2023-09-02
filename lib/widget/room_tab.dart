@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:fixnum/fixnum.dart';
+import 'package:openfoxwq_client/download_file/download_file.dart';
 
 import 'package:openfoxwq_client/generated/proto/common.pb.dart' as commonpb;
 import 'package:openfoxwq_client/generated/proto/fe.pb.dart' as fepb;
 import 'package:openfoxwq_client/provider/chat.dart';
+import 'package:openfoxwq_client/provider/game.dart';
 import 'package:openfoxwq_client/provider/player.dart';
 import 'package:openfoxwq_client/provider/room.dart';
 import 'package:openfoxwq_client/provider/ws.dart';
@@ -462,6 +464,12 @@ class RoomTabView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(saveGameSgfProvider, (previous, next) async {
+      if (next.filename.isNotEmpty) {
+        triggerFileDownload('${next.filename.replaceAll(':', '.')}.sgf', next.content);
+      }
+    });
+
     ref.listen<MatchResult?>(roomByIdProvider(room.id).select((room) => room.result), (MatchResult? prev, MatchResult? cur) {
       if (cur != null && (prev == null || cur != prev)) {
         infoDialog(context, Text(longResultString(context, cur.winner, cur.scoreLead)));

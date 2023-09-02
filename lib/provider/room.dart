@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
 import 'package:openfoxwq_client/generated/proto/fe.pb.dart';
 import 'package:openfoxwq_client/provider/broadcast.dart';
 import 'package:openfoxwq_client/provider/chat.dart';
@@ -918,6 +919,15 @@ class RoomById extends _$RoomById {
         message: "",
       ),
     );
+    if (event.winner != commonpb.Color.COL_NONE && event.gameId != 0) {
+      final req = FeRequest();
+      req.getGame = FeGetGameRequest();
+      req.getGame.id = event.gameId.toString();
+      req.getGame.suggestedFilename =
+        '${DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now())} [${state.white.name}] vs [${state.black.name}]';
+
+      ref.read(feClientProvider).send(req);
+    }
   }
 
   void agreeToCount() {

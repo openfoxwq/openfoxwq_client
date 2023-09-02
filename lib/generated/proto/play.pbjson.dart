@@ -1029,7 +1029,7 @@ const GameResultEvent$json = {
     {'1': 'message', '3': 5, '4': 1, '5': 9, '10': 'message'},
     {'1': 'ts_10', '3': 10, '4': 1, '5': 3, '10': 'ts10'},
     {'1': 'ts_12', '3': 12, '4': 1, '5': 3, '10': 'ts12'},
-    {'1': 'ts_13', '3': 13, '4': 1, '5': 3, '10': 'ts13'},
+    {'1': 'game_id', '3': 13, '4': 1, '5': 3, '10': 'gameId'},
   ],
 };
 
@@ -1039,7 +1039,7 @@ final $typed_data.Uint8List gameResultEventDescriptor = $convert.base64Decode(
     'QxEigKBndpbm5lchgCIAIoDjIQLm9wZW5mb3h3cS5Db2xvclIGd2lubmVyEh0KCnNjb3JlX2xl'
     'YWQYAyACKANSCXNjb3JlTGVhZBImCg91bmtub3duX2ZpZWxkXzQYBCABKANSDXVua25vd25GaW'
     'VsZDQSGAoHbWVzc2FnZRgFIAEoCVIHbWVzc2FnZRITCgV0c18xMBgKIAEoA1IEdHMxMBITCgV0'
-    'c18xMhgMIAEoA1IEdHMxMhITCgV0c18xMxgNIAEoA1IEdHMxMw==');
+    'c18xMhgMIAEoA1IEdHMxMhIXCgdnYW1lX2lkGA0gASgDUgZnYW1lSWQ=');
 
 @$core.Deprecated('Use matchMessageDescriptor instead')
 const MatchMessage$json = {

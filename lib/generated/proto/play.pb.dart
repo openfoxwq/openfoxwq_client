@@ -3854,7 +3854,7 @@ class GameResultEvent extends $pb.GeneratedMessage {
     ..aOS(5, _omitFieldNames ? '' : 'message')
     ..aInt64(10, _omitFieldNames ? '' : 'ts10', protoName: 'ts_10')
     ..aInt64(12, _omitFieldNames ? '' : 'ts12', protoName: 'ts_12')
-    ..aInt64(13, _omitFieldNames ? '' : 'ts13', protoName: 'ts_13')
+    ..aInt64(13, _omitFieldNames ? '' : 'gameId')
   ;
 
   @$core.Deprecated(
@@ -3942,13 +3942,13 @@ class GameResultEvent extends $pb.GeneratedMessage {
   void clearTs12() => clearField(12);
 
   @$pb.TagNumber(13)
-  $fixnum.Int64 get ts13 => $_getI64(7);
+  $fixnum.Int64 get gameId => $_getI64(7);
   @$pb.TagNumber(13)
-  set ts13($fixnum.Int64 v) { $_setInt64(7, v); }
+  set gameId($fixnum.Int64 v) { $_setInt64(7, v); }
   @$pb.TagNumber(13)
-  $core.bool hasTs13() => $_has(7);
+  $core.bool hasGameId() => $_has(7);
   @$pb.TagNumber(13)
-  void clearTs13() => clearField(13);
+  void clearGameId() => clearField(13);
 }
 
 class MatchMessage extends $pb.GeneratedMessage {
