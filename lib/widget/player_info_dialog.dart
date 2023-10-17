@@ -90,11 +90,17 @@ class PlayerInfoDialog extends ConsumerWidget {
       ),
     );
 
-    final streakIcons = player.streak.characters.map((e) {
+    final baseReq = getBaseRequirements(player.entry.rank);
+    final rankReq = computeRankRequirements(player.streak, baseReq);
+
+    final streakIcons =
+        player.streak.padRight(baseReq.wlen, '?').characters.map((e) {
       if (e == '+') {
         return Icon(Icons.check_circle_rounded, color: Colors.green[600]);
       } else if (e == '-') {
         return Icon(Icons.cancel, color: Colors.red[600]);
+      } else if (e == '?') {
+        return Icon(Icons.pending, color: Colors.grey);
       }
       return const Icon(Icons.question_mark_rounded);
     }).toList();
@@ -149,9 +155,6 @@ class PlayerInfoDialog extends ConsumerWidget {
       ),
     );
 
-    final rankReq = computeRankRequirements(
-        player.streak, getBaseRequirements(player.entry.rank));
-
     final recentCard = Card(
       child: Column(
         children: [
@@ -174,19 +177,19 @@ class PlayerInfoDialog extends ConsumerWidget {
             children: [
               Row(children: [
                 Icon(Icons.keyboard_arrow_up, color: Colors.green[600]),
-                Text(rankReq.up1.toString()),
+                Text(rankReq.up1 >= 0 ? rankReq.up1.toString() : '-'),
               ]),
               Row(children: [
                 Icon(Icons.keyboard_double_arrow_up, color: Colors.green[600]),
-                Text(rankReq.up2.toString()),
+                Text(rankReq.up2 >= 0 ? rankReq.up2.toString() : '-'),
               ]),
               Row(children: [
                 Icon(Icons.keyboard_arrow_down, color: Colors.red[600]),
-                Text(rankReq.down1.toString()),
+                Text(rankReq.down1 >= 0 ? rankReq.down1.toString() : '-'),
               ]),
               Row(children: [
                 Icon(Icons.keyboard_double_arrow_down, color: Colors.red[600]),
-                Text(rankReq.down2.toString()),
+                Text(rankReq.down2 >= 0 ? rankReq.down2.toString() : '-'),
               ]),
             ],
           ),
