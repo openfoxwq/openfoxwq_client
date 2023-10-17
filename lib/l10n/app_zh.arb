@@ -135,8 +135,8 @@
       "byoyomiTime": { "type": "num" }
     }
   },
-
-    "automatchPresetMainTime": "{time}分}",
+  
+  "automatchPresetMainTime": "{time}分}",
   "@automatchPresetMainTime": {
     "placeholders": {
       "time": {"type" : "num" }
@@ -150,7 +150,7 @@
       "byoyomiTime": { "type": "num" }
     }
   },
-  
+
   "chatMsgTypeSystem": "系统",
   "chatMsgTypeNotice": "提示",
   "chatMsgTypeGame": "的支持对局进行中",

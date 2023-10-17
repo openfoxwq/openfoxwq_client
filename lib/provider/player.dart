@@ -47,26 +47,26 @@ class PlayerEntry with _$PlayerEntry {
     required String? avatarUrl,
   }) = _PlayerEntry;
 
-static PlayerEntry ofPlayerInfo(commonpb.PlayerInfo info) => PlayerEntry(
-      id: info.playerId.toInt(),
-      name: _safeString(info.name),
-      nameNative: _safeString(info.nameNative),
-      rank: info.rank,
-      country: info.country,
-      wins: info.rankedWins.toInt(),
-      losses: info.rankedLosses.toInt(),
-      status: info.status,
-      accepting: info.acceptingMatches,
-      sex: info.sex,
-      flair: info.flair,
-      membershipType: info.membershipType,
-      memberSince: DateTime(0),
-      ai: info.ai,
-      amateur6d: info.amateur6d,
-      avatarUrl: info.avatarId.isNotEmpty 
-        ? "https://avata.foxwq.com/avatar/${info.playerId}/${info.avatarId}.jpg"
-        : "https://avata.foxwq.com/avatar/headimg/avatar_${info.defaultAvatarId.toString().padLeft(2, '0')}.png",
-    );
+  static PlayerEntry ofPlayerInfo(commonpb.PlayerInfo info) => PlayerEntry(
+        id: info.playerId.toInt(),
+        name: _safeString(info.name),
+        nameNative: _safeString(info.nameNative),
+        rank: info.rank,
+        country: info.country,
+        wins: info.rankedWins.toInt(),
+        losses: info.rankedLosses.toInt(),
+        status: info.status,
+        accepting: info.acceptingMatches,
+        sex: info.sex,
+        flair: info.flair,
+        membershipType: info.membershipType,
+        memberSince: DateTime(0),
+        ai: info.ai,
+        amateur6d: info.amateur6d,
+        avatarUrl: info.avatarId.isNotEmpty
+            ? "https://avata.foxwq.com/avatar/${info.playerId}/${info.avatarId}.jpg"
+            : "https://avata.foxwq.com/avatar/headimg/avatar_${info.defaultAvatarId.toString().padLeft(2, '0')}.png",
+      );
 }
 
 @freezed
@@ -86,6 +86,165 @@ class RankRequirements with _$RankRequirements {
     required int down1,
     required int down2,
   }) = _RankRequirements;
+}
+
+@freezed
+class BaseRequirements with _$BaseRequirements {
+  const factory BaseRequirements({
+    required int wlen,
+    required RankRequirements req,
+  }) = _BaseRequirements;
+}
+
+// Base rank requirements taken from https://www.foxwq.com/soft/readme.html
+BaseRequirements getBaseRequirements(commonpb.Rank rank) {
+  if (rank.value > commonpb.Rank.RANK_9D.value) {
+    return BaseRequirements(
+        wlen: 1, req: RankRequirements(up1: 0, up2: 0, down1: 0, down2: 0));
+  } else if (rank.value >= commonpb.Rank.RANK_9D.value) {
+    return BaseRequirements(
+        wlen: 20, req: RankRequirements(up1: 0, up2: 0, down1: 13, down2: 17));
+  } else if (rank.value >= commonpb.Rank.RANK_8D.value) {
+    return BaseRequirements(
+        wlen: 20, req: RankRequirements(up1: 15, up2: 0, down1: 13, down2: 17));
+  } else if (rank.value >= commonpb.Rank.RANK_5D.value) {
+    return BaseRequirements(
+        wlen: 20,
+        req: RankRequirements(up1: 15, up2: 20, down1: 13, down2: 17));
+  } else if (rank.value >= commonpb.Rank.RANK_3D.value) {
+    return BaseRequirements(
+        wlen: 20,
+        req: RankRequirements(up1: 14, up2: 18, down1: 13, down2: 17));
+  } else if (rank.value >= commonpb.Rank.RANK_2K.value) {
+    return BaseRequirements(
+        wlen: 19,
+        req: RankRequirements(up1: 12, up2: 16, down1: 13, down2: 17));
+  } else if (rank.value >= commonpb.Rank.RANK_5K.value) {
+    return BaseRequirements(
+        wlen: 18,
+        req: RankRequirements(up1: 11, up2: 15, down1: 12, down2: 16));
+  } else if (rank.value >= commonpb.Rank.RANK_9K.value) {
+    return BaseRequirements(
+        wlen: 17,
+        req: RankRequirements(up1: 10, up2: 14, down1: 11, down2: 14));
+  } else if (rank.value >= commonpb.Rank.RANK_12K.value) {
+    return BaseRequirements(
+        wlen: 14, req: RankRequirements(up1: 8, up2: 12, down1: 10, down2: 12));
+  } else if (rank.value >= commonpb.Rank.RANK_15K.value) {
+    return BaseRequirements(
+        wlen: 12, req: RankRequirements(up1: 7, up2: 10, down1: 8, down2: 10));
+  } else if (rank.value >= commonpb.Rank.RANK_16K.value) {
+    return BaseRequirements(
+        wlen: 10, req: RankRequirements(up1: 6, up2: 8, down1: 7, down2: 9));
+  } else if (rank.value >= commonpb.Rank.RANK_17K.value) {
+    return BaseRequirements(
+        wlen: 10, req: RankRequirements(up1: 6, up2: 8, down1: 7, down2: 0));
+  } else if (rank.value >= commonpb.Rank.RANK_18K.value) {
+    return BaseRequirements(
+        wlen: 10, req: RankRequirements(up1: 6, up2: 8, down1: 0, down2: 0));
+  } else {
+    return BaseRequirements(
+        wlen: 1, req: RankRequirements(up1: 0, up2: 0, down1: 0, down2: 0));
+  }
+}
+
+RankRequirements computeRankRequirements(
+    String streak, BaseRequirements baseRequirements) {
+  List<int> winIndices = [];
+  List<int> lossIndices = [];
+
+  for (int i = 0; i < streak.length; i++) {
+    switch (streak[i]) {
+      case '+':
+        winIndices.add(i);
+        break;
+      case '-':
+        lossIndices.add(i);
+        break;
+    }
+  }
+
+  final numWins = winIndices.length;
+  final numLosses = lossIndices.length;
+
+  // Number of games missing to have a full streak
+  final numMissing = baseRequirements.wlen - streak.length;
+
+  // Indicate whether the player has satisfied rank up/down requirements
+  bool upSatisfied1 =
+      0 < baseRequirements.req.up1 && baseRequirements.req.up1 <= numWins;
+  bool downSatisfied1 =
+      0 < baseRequirements.req.down1 && baseRequirements.req.down1 <= numLosses;
+
+  // Count how many more wins/losses are needed to satisfy the base requirements
+  final upRequired1 = max(0, baseRequirements.req.up1 - numWins);
+  final upRequired2 = max(0, baseRequirements.req.up2 - numWins);
+  final downRequired1 = max(0, baseRequirements.req.down1 - numLosses);
+  final downRequired2 = max(0, baseRequirements.req.down2 - numLosses);
+
+  // If the player already qualifies for rank-up, only compute up2
+  if (upSatisfied1) {
+    return RankRequirements(
+      up1: 0,
+      up2: (upRequired2 <= numMissing) ? upRequired2 : -1,
+      down1: -1,
+      down2: -1,
+    );
+  }
+
+  // If the player already qualifies for rank-down, only compute down2
+  if (downSatisfied1) {
+    return RankRequirements(
+      up1: -1,
+      up2: -1,
+      down1: 0,
+      down2: (downRequired2 <= numMissing) ? downRequired2 : -1,
+    );
+  }
+
+  // If the streak is already complete, double-ranking is not possible,
+  // and the number of required wins indicates up-to which loss we need to convert into a win
+  // same (but inverted) logic for losses
+  if (numMissing == 0) {
+    return RankRequirements(
+      up1: (baseRequirements.req.up1 == 0)
+          ? -1
+          : (lossIndices[upRequired1 - 1] + 1),
+      up2: -1,
+      down1: (baseRequirements.req.down1 == 0)
+          ? -1
+          : (winIndices[downRequired1 - 1] + 1),
+      down2: -1,
+    );
+  }
+
+  // If the streak is incomplete, we also compute double-ranking possibilities.
+  // for up1, if upRequired1 is smaller-equal than numMissing, then that is the number of required wins,
+  // else, if upRequired1 is greater, we first need to win `numMissing` games,
+  // and then also win up to the `n`th loss, where `n` is the number of remaining required wins.
+  // same logic for down1.
+  return RankRequirements(
+    up1: (baseRequirements.req.up1 == 0)
+        ? -1
+        : (upRequired1 <= numMissing)
+            ? upRequired1
+            : numMissing + lossIndices[upRequired1 - numMissing - 1] + 1,
+    up2: (baseRequirements.req.up2 == 0)
+        ? -1
+        : (upRequired2 <= numMissing)
+            ? upRequired2
+            : -1,
+    down1: (baseRequirements.req.down1 == 0)
+        ? -1
+        : (downRequired1 <= numMissing)
+            ? downRequired1
+            : numMissing + winIndices[downRequired1 - numMissing - 1] + 1,
+    down2: (baseRequirements.req.down2 == 0)
+        ? -1
+        : (downRequired2 <= numMissing)
+            ? downRequired2
+            : -1,
+  );
 }
 
 @freezed
@@ -294,7 +453,7 @@ PlayerShortEntry defaultPlayerShortEntry() => const PlayerShortEntry(
       rank: commonpb.Rank.RANK_18K,
       country: commonpb.Country.CHINA,
       avatarUrl: null,
-);
+    );
 
 PlayerEntry defaultPlayerEntry() => PlayerEntry(
       id: 0,
@@ -350,73 +509,74 @@ class SelectedPlayer extends _$SelectedPlayer {
   }
 
   void clear() => state = state.copyWith(
-    entry: state.entry.copyWith(id: 0),
-  );
+        entry: state.entry.copyWith(id: 0),
+      );
 
   void setExtended(commonpb.PlayerInfoExtended info) {
-      final defaultResults = commonpb.PlayerInfoExtended_Results();
-      defaultResults.wins   = Int64(0);
-      defaultResults.draws  = Int64(0);
-      defaultResults.losses = Int64(0);
+    final defaultResults = commonpb.PlayerInfoExtended_Results();
+    defaultResults.wins = Int64(0);
+    defaultResults.draws = Int64(0);
+    defaultResults.losses = Int64(0);
 
-      final currentResults = info.results.firstWhere(
-          (r) => r.type == commonpb.PlayerInfoExtended_ResultsType.CURRENT,
-          orElse: () => defaultResults);
-      final overallResults = info.results.firstWhere(
-          (r) => r.type == commonpb.PlayerInfoExtended_ResultsType.OVERALL,
-          orElse: () => defaultResults);
-      final rankedResults = info.results.firstWhere(
-          (r) => r.type == commonpb.PlayerInfoExtended_ResultsType.RANKED,
-          orElse: () => defaultResults);
-      final freeResults = info.results.firstWhere(
-          (r) => r.type == commonpb.PlayerInfoExtended_ResultsType.FREE,
-          orElse: () => defaultResults);
+    final currentResults = info.results.firstWhere(
+        (r) => r.type == commonpb.PlayerInfoExtended_ResultsType.CURRENT,
+        orElse: () => defaultResults);
+    final overallResults = info.results.firstWhere(
+        (r) => r.type == commonpb.PlayerInfoExtended_ResultsType.OVERALL,
+        orElse: () => defaultResults);
+    final rankedResults = info.results.firstWhere(
+        (r) => r.type == commonpb.PlayerInfoExtended_ResultsType.RANKED,
+        orElse: () => defaultResults);
+    final freeResults = info.results.firstWhere(
+        (r) => r.type == commonpb.PlayerInfoExtended_ResultsType.FREE,
+        orElse: () => defaultResults);
 
-      state = state.copyWith(
-        entry: state.entry.copyWith(
-          id: info.playerId.toInt(),
-          name: utf8.decode(info.registerInfo.name, allowMalformed: true),
-          nameNative:
-              utf8.decode(info.registerInfo.nameNative, allowMalformed: true),
-          rank: info.rank,
-          country: info.registerInfo.country,
-          wins: max(state.entry.wins, rankedResults.wins.toInt()),
-          losses: max(state.entry.losses, rankedResults.losses.toInt()),
-          sex: info.registerInfo.sex,
-          flair: info.flair.flair,
-          membershipType: info.membershipInfo.type,
-          memberSince: DateTime.fromMillisecondsSinceEpoch(info.registerInfo.memberSinceUnixTs.toInt() * 1000),
-        ),
-        foxCoin: info.foxcoin.toInt(),
-        performance: PlayerPerformance(
-          rating: info.perfRecord.foxcoin.toInt(),
-          wr: info.perfRecord.wr.toInt(),
-          stamina: info.perfRecord.stamina.toInt(),
-        ),
-        streak: info.recentRecord.streak,
-        rankRequirements: RankRequirements(
-          up1: info.recentRecord.rankRequirements.up1.toInt(),
-          up2: info.recentRecord.rankRequirements.up2.toInt(),
-          down1: info.recentRecord.rankRequirements.down1.toInt(),
-          down2: info.recentRecord.rankRequirements.down2.toInt(),
-        ),
-        overall: PlayerResults(
-            wins: overallResults.wins.toInt(),
-            losses: overallResults.losses.toInt(),
-            draws: overallResults.draws.toInt()),
-        current: PlayerResults(
-            wins: currentResults.wins.toInt(),
-            losses: currentResults.losses.toInt(),
-            draws: currentResults.draws.toInt()),
-        ranked: PlayerResults(
-            wins: rankedResults.wins.toInt(),
-            losses: rankedResults.losses.toInt(),
-            draws: rankedResults.draws.toInt()),
-        free: PlayerResults(
-            wins: freeResults.wins.toInt(),
-            losses: freeResults.losses.toInt(),
-            draws: freeResults.draws.toInt()),
-      );
+    state = state.copyWith(
+      entry: state.entry.copyWith(
+        id: info.playerId.toInt(),
+        name: utf8.decode(info.registerInfo.name, allowMalformed: true),
+        nameNative:
+            utf8.decode(info.registerInfo.nameNative, allowMalformed: true),
+        rank: info.rank,
+        country: info.registerInfo.country,
+        wins: max(state.entry.wins, rankedResults.wins.toInt()),
+        losses: max(state.entry.losses, rankedResults.losses.toInt()),
+        sex: info.registerInfo.sex,
+        flair: info.flair.flair,
+        membershipType: info.membershipInfo.type,
+        memberSince: DateTime.fromMillisecondsSinceEpoch(
+            info.registerInfo.memberSinceUnixTs.toInt() * 1000),
+      ),
+      foxCoin: info.foxcoin.toInt(),
+      performance: PlayerPerformance(
+        rating: info.perfRecord.foxcoin.toInt(),
+        wr: info.perfRecord.wr.toInt(),
+        stamina: info.perfRecord.stamina.toInt(),
+      ),
+      streak: info.recentRecord.streak,
+      rankRequirements: RankRequirements(
+        up1: info.recentRecord.rankRequirements.up1.toInt(),
+        up2: info.recentRecord.rankRequirements.up2.toInt(),
+        down1: info.recentRecord.rankRequirements.down1.toInt(),
+        down2: info.recentRecord.rankRequirements.down2.toInt(),
+      ),
+      overall: PlayerResults(
+          wins: overallResults.wins.toInt(),
+          losses: overallResults.losses.toInt(),
+          draws: overallResults.draws.toInt()),
+      current: PlayerResults(
+          wins: currentResults.wins.toInt(),
+          losses: currentResults.losses.toInt(),
+          draws: currentResults.draws.toInt()),
+      ranked: PlayerResults(
+          wins: rankedResults.wins.toInt(),
+          losses: rankedResults.losses.toInt(),
+          draws: rankedResults.draws.toInt()),
+      free: PlayerResults(
+          wins: freeResults.wins.toInt(),
+          losses: freeResults.losses.toInt(),
+          draws: freeResults.draws.toInt()),
+    );
   }
 
   void updateIfMatch(commonpb.PlayerInfoExtended info) {

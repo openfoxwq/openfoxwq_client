@@ -35,7 +35,7 @@ final activeRoomsProvider =
 );
 
 typedef _$ActiveRooms = AutoDisposeNotifier<List<ActiveRoom>>;
-String _$roomByIdHash() => r'0e370742d27f8d0660b2a1ae00a73ade5c3962f2';
+String _$roomByIdHash() => r'bebe7ebe224c2d717e1dc0da8fc96c2357e76ee3';
 
 /// Copied from Dart SDK
 class _SystemHash {

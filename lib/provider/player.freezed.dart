@@ -1012,6 +1012,154 @@ abstract class _RankRequirements implements RankRequirements {
 }
 
 /// @nodoc
+mixin _$BaseRequirements {
+  int get wlen => throw _privateConstructorUsedError;
+  RankRequirements get req => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $BaseRequirementsCopyWith<BaseRequirements> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BaseRequirementsCopyWith<$Res> {
+  factory $BaseRequirementsCopyWith(
+          BaseRequirements value, $Res Function(BaseRequirements) then) =
+      _$BaseRequirementsCopyWithImpl<$Res, BaseRequirements>;
+  @useResult
+  $Res call({int wlen, RankRequirements req});
+
+  $RankRequirementsCopyWith<$Res> get req;
+}
+
+/// @nodoc
+class _$BaseRequirementsCopyWithImpl<$Res, $Val extends BaseRequirements>
+    implements $BaseRequirementsCopyWith<$Res> {
+  _$BaseRequirementsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? wlen = null,
+    Object? req = null,
+  }) {
+    return _then(_value.copyWith(
+      wlen: null == wlen
+          ? _value.wlen
+          : wlen // ignore: cast_nullable_to_non_nullable
+              as int,
+      req: null == req
+          ? _value.req
+          : req // ignore: cast_nullable_to_non_nullable
+              as RankRequirements,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RankRequirementsCopyWith<$Res> get req {
+    return $RankRequirementsCopyWith<$Res>(_value.req, (value) {
+      return _then(_value.copyWith(req: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_BaseRequirementsCopyWith<$Res>
+    implements $BaseRequirementsCopyWith<$Res> {
+  factory _$$_BaseRequirementsCopyWith(
+          _$_BaseRequirements value, $Res Function(_$_BaseRequirements) then) =
+      __$$_BaseRequirementsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int wlen, RankRequirements req});
+
+  @override
+  $RankRequirementsCopyWith<$Res> get req;
+}
+
+/// @nodoc
+class __$$_BaseRequirementsCopyWithImpl<$Res>
+    extends _$BaseRequirementsCopyWithImpl<$Res, _$_BaseRequirements>
+    implements _$$_BaseRequirementsCopyWith<$Res> {
+  __$$_BaseRequirementsCopyWithImpl(
+      _$_BaseRequirements _value, $Res Function(_$_BaseRequirements) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? wlen = null,
+    Object? req = null,
+  }) {
+    return _then(_$_BaseRequirements(
+      wlen: null == wlen
+          ? _value.wlen
+          : wlen // ignore: cast_nullable_to_non_nullable
+              as int,
+      req: null == req
+          ? _value.req
+          : req // ignore: cast_nullable_to_non_nullable
+              as RankRequirements,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_BaseRequirements implements _BaseRequirements {
+  const _$_BaseRequirements({required this.wlen, required this.req});
+
+  @override
+  final int wlen;
+  @override
+  final RankRequirements req;
+
+  @override
+  String toString() {
+    return 'BaseRequirements(wlen: $wlen, req: $req)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_BaseRequirements &&
+            (identical(other.wlen, wlen) || other.wlen == wlen) &&
+            (identical(other.req, req) || other.req == req));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, wlen, req);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_BaseRequirementsCopyWith<_$_BaseRequirements> get copyWith =>
+      __$$_BaseRequirementsCopyWithImpl<_$_BaseRequirements>(this, _$identity);
+}
+
+abstract class _BaseRequirements implements BaseRequirements {
+  const factory _BaseRequirements(
+      {required final int wlen,
+      required final RankRequirements req}) = _$_BaseRequirements;
+
+  @override
+  int get wlen;
+  @override
+  RankRequirements get req;
+  @override
+  @JsonKey(ignore: true)
+  _$$_BaseRequirementsCopyWith<_$_BaseRequirements> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$PlayerPerformance {
   int get rating => throw _privateConstructorUsedError;
   int get wr => throw _privateConstructorUsedError;

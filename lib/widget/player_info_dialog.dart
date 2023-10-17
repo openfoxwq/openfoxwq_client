@@ -31,8 +31,7 @@ class PlayerInfoDialog extends ConsumerWidget {
     }
   }
 
-  Widget _resultRow(
-      BuildContext context, String header, PlayerResults res) {
+  Widget _resultRow(BuildContext context, String header, PlayerResults res) {
     final loc = AppLocalizations.of(context)!;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -50,7 +49,8 @@ class PlayerInfoDialog extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final loc = AppLocalizations.of(context)!;
-    final myPlayerInfo = ref.watch(loginStateProvider.select((login) => login.playerInfo!));
+    final myPlayerInfo =
+        ref.watch(loginStateProvider.select((login) => login.playerInfo!));
     final myPlayerId = myPlayerInfo.playerId.toInt();
     final player = ref.watch(selectedPlayerProvider);
 
@@ -63,12 +63,12 @@ class PlayerInfoDialog extends ConsumerWidget {
     );
 
     final avatar = Card(
-      child: player.entry.avatarUrl != null 
-        ? FadeInImage.assetNetwork(
-            placeholder: 'assets/avatar/avatar_00.png', 
-            image: player.entry.avatarUrl!,
-          )
-        : Image.asset('assets/avatar/avatar_00.png'),
+      child: player.entry.avatarUrl != null
+          ? FadeInImage.assetNetwork(
+              placeholder: 'assets/avatar/avatar_00.png',
+              image: player.entry.avatarUrl!,
+            )
+          : Image.asset('assets/avatar/avatar_00.png'),
     );
 
     final rankBox = Card(
@@ -112,7 +112,7 @@ class PlayerInfoDialog extends ConsumerWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text('${loc.playerInfoDialogName}: ', 
+                  Text('${loc.playerInfoDialogName}: ',
                       style: const TextStyle(fontWeight: FontWeight.bold)),
                   Text('${loc.playerInfoDialogCountry}: ',
                       style: const TextStyle(fontWeight: FontWeight.bold)),
@@ -137,7 +137,9 @@ class PlayerInfoDialog extends ConsumerWidget {
                   Text(
                       '${player.performance.rating} / ${player.performance.wr} / ${player.performance.stamina}'),
                   Text('${player.foxCoin}'),
-                  Text(player.entry.memberSince.year == 0 ? '-' : player.entry.memberSince.toString()),
+                  Text(player.entry.memberSince.year == 0
+                      ? '-'
+                      : player.entry.memberSince.toString()),
                 ],
               ),
               rankBox,
@@ -146,6 +148,9 @@ class PlayerInfoDialog extends ConsumerWidget {
         ],
       ),
     );
+
+    final rankReq = computeRankRequirements(
+        player.streak, getBaseRequirements(player.entry.rank));
 
     final recentCard = Card(
       child: Column(
@@ -169,19 +174,19 @@ class PlayerInfoDialog extends ConsumerWidget {
             children: [
               Row(children: [
                 Icon(Icons.keyboard_arrow_up, color: Colors.green[600]),
-                Text(player.rankRequirements.up1.toString()),
+                Text(rankReq.up1.toString()),
               ]),
               Row(children: [
                 Icon(Icons.keyboard_double_arrow_up, color: Colors.green[600]),
-                Text(player.rankRequirements.up2.toString()),
+                Text(rankReq.up2.toString()),
               ]),
               Row(children: [
                 Icon(Icons.keyboard_arrow_down, color: Colors.red[600]),
-                Text(player.rankRequirements.down1.toString()),
+                Text(rankReq.down1.toString()),
               ]),
               Row(children: [
                 Icon(Icons.keyboard_double_arrow_down, color: Colors.red[600]),
-                Text(player.rankRequirements.down2.toString()),
+                Text(rankReq.down2.toString()),
               ]),
             ],
           ),
@@ -216,7 +221,7 @@ class PlayerInfoDialog extends ConsumerWidget {
               final req = FeRequest();
               req.changePassword = FeChangePassword();
               ref.read(feClientProvider).send(req);
-            }, 
+            },
           ),
         ],
       ),
@@ -237,7 +242,7 @@ class PlayerInfoDialog extends ConsumerWidget {
               ref.read(selectedPlayerProvider.notifier).clear();
               ref.read(currentChallengeProvider.notifier).setPlayer(player);
               showChallengeDialog(context);
-            }, 
+            },
           ),
         ],
       ),
@@ -246,10 +251,11 @@ class PlayerInfoDialog extends ConsumerWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        infoCard,
-        recentCard,
-        resultsCard,
-      ] + (myPlayerId == player.entry.id ? [personalCard] : [othersCard]),
+            infoCard,
+            recentCard,
+            resultsCard,
+          ] +
+          (myPlayerId == player.entry.id ? [personalCard] : [othersCard]),
     );
   }
 }
@@ -261,7 +267,7 @@ Future<void> showPlayerInfoDialog(BuildContext context) {
     builder: (context) {
       return Consumer(
         builder: (context, ref, _) {
-        final loc = AppLocalizations.of(context)!;
+          final loc = AppLocalizations.of(context)!;
           final player = ref.watch(selectedPlayerProvider);
           return AlertDialog(
             title: Row(
