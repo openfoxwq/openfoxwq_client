@@ -33,6 +33,17 @@ If you have any questions, do not hesitate to contact me at ale64bit@proton.me o
 Sincerely,
 The openfoxwq author.""";
 
+const discontinuationText = """Hi,
+
+Unfortunately, openfoxwq will be discontinued. The site will remain up until around new year time, after which it will be taken down and there will be no further development on the web application.
+
+Thank you for using openfoxwq during this time. If you enjoyed using openfoxwq, you might want to try minifoxwq, a native third-party unofficial client developed by the author of openfoxwq, which is actively maintained.
+
+Do not hesitate to join our Discord or contact me if you have any questions.
+
+Sincerely,
+The openfoxwq author.""";
+
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
 
@@ -46,8 +57,10 @@ class LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   void initState() {
-    final username = ref.read(appSettingsProvider.select((settings) => settings.username));
-    final password = ref.read(appSettingsProvider.select((settings) => settings.password));
+    final username =
+        ref.read(appSettingsProvider.select((settings) => settings.username));
+    final password =
+        ref.read(appSettingsProvider.select((settings) => settings.password));
     _usernameTextController = TextEditingController(text: username);
     _passwordTextController = TextEditingController(text: password);
     super.initState();
@@ -64,7 +77,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
 
-    ref.listen(connectionErrorProvider, (previous, next) { 
+    ref.listen(connectionErrorProvider, (previous, next) {
       if (next != null) {
         infoDialog(context, Text(loc.loginDisconnectedFromServer));
       }
@@ -105,12 +118,44 @@ class LoginPageState extends ConsumerState<LoginPage> {
             );
           },
         );
+      } else if (curInfo.playerId > 0) {
+        showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Notice'),
+              icon: const Icon(Icons.warning),
+              content: Text(discontinuationText),
+              actions: <Widget>[
+                TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: Theme.of(context).textTheme.labelLarge,
+                  ),
+                  child: Text(loc.close),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: Theme.of(context).textTheme.labelLarge,
+                  ),
+                  child: Text('Check minifoxwq'),
+                  onPressed: () {
+                    launchUrl(Uri.parse('https://openfoxwq.github.io/'));
+                  },
+                ),
+              ],
+            );
+          },
+        );
       }
     });
 
     final canLogin = ref.watch(canLoginProvider);
     final registerUrl = ref.watch(registerUrlProvider);
-    final rememberPassword = ref.watch(appSettingsProvider.select((settings) => settings.rememberPassword));
+    final rememberPassword = ref.watch(
+        appSettingsProvider.select((settings) => settings.rememberPassword));
 
     doLogin() {
       final username = _usernameTextController.text;
@@ -139,7 +184,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
       style: ElevatedButton.styleFrom(
         textStyle: Theme.of(context).textTheme.labelLarge,
         foregroundColor: Theme.of(context).buttonTheme.colorScheme!.surface,
-        backgroundColor: Colors.green[700], 
+        backgroundColor: Colors.green[700],
       ),
       child: Text(loc.loginRegister),
     );
@@ -151,7 +196,9 @@ class LoginPageState extends ConsumerState<LoginPage> {
         dense: true,
         value: rememberPassword,
         onChanged: (bool? value) {
-          ref.read(appSettingsProvider.notifier).setRememberPassword(value ?? false);
+          ref
+              .read(appSettingsProvider.notifier)
+              .setRememberPassword(value ?? false);
         },
       ),
     );
@@ -165,15 +212,20 @@ class LoginPageState extends ConsumerState<LoginPage> {
         const SizedBox(height: 20.0),
         InkWell(
           onTap: () => launchUrlString('https://www.foxwq.com'),
-          child: const Text('[1] https://www.foxwq.com', style: TextStyle(color: Colors.blue)),
+          child: const Text('[1] https://www.foxwq.com',
+              style: TextStyle(color: Colors.blue)),
         ),
         InkWell(
-          onTap: () => launchUrlString('https://edu.foxwq.com/complex/useragreement.html'),
-          child: const Text('[2] https://edu.foxwq.com/complex/useragreement.html', style: TextStyle(color: Colors.blue)),
+          onTap: () => launchUrlString(
+              'https://edu.foxwq.com/complex/useragreement.html'),
+          child: const Text(
+              '[2] https://edu.foxwq.com/complex/useragreement.html',
+              style: TextStyle(color: Colors.blue)),
         ),
         InkWell(
           onTap: () => launchUrlString('https://discord.gg/RG2KquNWKE'),
-          child: const Text('[3] https://discord.gg/RG2KquNWKE', style: TextStyle(color: Colors.blue)),
+          child: const Text('[3] https://discord.gg/RG2KquNWKE',
+              style: TextStyle(color: Colors.blue)),
         ),
       ],
     );
@@ -251,7 +303,8 @@ class LoginPageState extends ConsumerState<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextButton(
-                            onPressed: () => infoDialog(context, disclaimerBody),
+                            onPressed: () =>
+                                infoDialog(context, disclaimerBody),
                             child: Text(loc.importantNotice),
                           ),
                         ],
@@ -259,24 +312,28 @@ class LoginPageState extends ConsumerState<LoginPage> {
                     ),
                     const Divider(thickness: 2.0, height: 2.0),
                     TextButton.icon(
-                      onPressed: () => launchUrlString('https://discord.gg/RG2KquNWKE'),
+                      onPressed: () =>
+                          launchUrlString('https://discord.gg/RG2KquNWKE'),
                       icon: SizedBox(
                         child: Image.asset('assets/misc/discord-mark-blue.png'),
-                      ), 
+                      ),
                       label: Text(loc.joinDiscord),
                     ),
                     TextButton.icon(
-                      onPressed: () => launchUrlString('https://github.com/openfoxwq/openfoxwq_client'),
+                      onPressed: () => launchUrlString(
+                          'https://github.com/openfoxwq/openfoxwq_client'),
                       icon: SizedBox(
                         child: Image.asset('assets/misc/github-mark.png'),
-                      ), 
+                      ),
                       label: Text(loc.contributeGitHub),
                     ),
                     TextButton.icon(
-                      onPressed: () => launchUrlString('https://www.buymeacoffee.com/ale64bit'),
+                      onPressed: () => launchUrlString(
+                          'https://www.buymeacoffee.com/ale64bit'),
                       icon: SizedBox(
-                        child: Image.asset('assets/misc/bmc-logo-no-background.png'),
-                      ), 
+                        child: Image.asset(
+                            'assets/misc/bmc-logo-no-background.png'),
+                      ),
                       label: Text('Buy me a coffee'),
                     ),
                     const SizedBox(height: 8),
